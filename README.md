@@ -3,7 +3,7 @@
 
 ## Introduction
 
-[LLMChat.co](https://llmchat.co) is a sophisticated AI-powered chatbot platform that prioritizes privacy while offering powerful research and agentic capabilities. Built as a monorepo with Next.js, TypeScript, and cutting-edge AI technologies, it provides multiple specialized chat modes including Pro Search and Deep Research for in-depth analysis of complex topics.
+[LLMChat.co](https://delph.tech) is a sophisticated AI-powered chatbot platform that prioritizes privacy while offering powerful research and agentic capabilities. Built as a monorepo with Next.js, TypeScript, and cutting-edge AI technologies, it provides multiple specialized chat modes including Pro Search and Deep Research for in-depth analysis of complex topics.
 
 LLMChat.co stands out with its workflow orchestration system and focus on privacy, storing all user data locally in the browser using IndexedDB, ensuring your conversations never leave your device.
 

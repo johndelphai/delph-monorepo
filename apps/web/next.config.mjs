@@ -1,4 +1,8 @@
 import { withSentryConfig } from '@sentry/nextjs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig = {
     transpilePackages: ['next-mdx-remote'],
@@ -12,11 +16,20 @@ const nextConfig = {
 
     experimental: {
         externalDir: true,
+        serverComponentsExternalPackages: [],
     },
     webpack: (config, options) => {
         if (!options.isServer) {
             config.resolve.fallback = { fs: false, module: false, path: false };
         }
+
+        // Allow monorepo packages to resolve dependencies from the web app's node_modules
+        config.resolve.modules = [
+            path.resolve(__dirname, 'node_modules'),
+            'node_modules',
+            ...(config.resolve.modules || []),
+        ];
+
         // Experimental features
         config.experiments = {
             ...config.experiments,
@@ -24,10 +37,10 @@ const nextConfig = {
             layers: true,
         };
 
+        // Suppress critical dependency warnings for import.meta property access
+        config.module.exprContextCritical = false;
+
         return config;
-    },
-    async redirects() {
-        return [{ source: '/', destination: '/chat', permanent: true }];
     },
 };
 

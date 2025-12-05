@@ -9,7 +9,6 @@
     ],
     "compilerOptions": {
         "paths": {
-            "@repo/shared/types": ["./lib/types"],
             "@/hooks": ["./lib/hooks"],
             "@/libs/*": ["./lib/*"],
             "@/config/*": ["./config/*"],

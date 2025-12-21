@@ -1,7 +1,7 @@
-import { auth } from '@clerk/nextjs/server';
 import { CHAT_MODE_CREDIT_COSTS, ChatModeConfig } from '@repo/shared/config';
 import { Geo, geolocation } from '@vercel/functions';
 import { NextRequest } from 'next/server';
+import { getAuthSession } from '@/lib/auth';
 import {
     DAILY_CREDITS_AUTH,
     DAILY_CREDITS_IP,
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-        const session = await auth();
+        const session = await getAuthSession(request);
         const userId = session?.userId ?? undefined;
 
         const parsed = await request.json().catch(() => ({}));
@@ -59,6 +59,15 @@ export async function POST(request: NextRequest) {
                 status: 401,
                 headers: { 'Content-Type': 'application/json' },
             });
+        }
+
+        if (!!ChatModeConfig[data.mode]?.requiresApiKey) {
+            return new Response(
+                JSON.stringify({
+                    error: 'This mode requires your own API key. Add one in Settings → API Keys.',
+                }),
+                { status: 403, headers: { 'Content-Type': 'application/json' } }
+            );
         }
 
         if (remainingCredits < creditCost && process.env.NODE_ENV !== 'development') {

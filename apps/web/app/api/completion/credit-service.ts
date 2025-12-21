@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { kv } from '../../../lib/redis';
 
 const DAILY_CREDITS_AUTH = process.env.FREE_CREDITS_LIMIT_REQUESTS_AUTH
     ? parseInt(process.env.FREE_CREDITS_LIMIT_REQUESTS_AUTH)
@@ -71,11 +71,15 @@ async function getRemainingCreditsForUser(userId: string): Promise<number> {
         const lastRefillKey = `${key}:lastRefill`;
         const now = new Date().toISOString().split('T')[0];
 
-        return await kv.eval(
+        const result = await kv.eval(
             GET_REMAINING_CREDITS_SCRIPT,
-            [key, lastRefillKey],
-            [DAILY_CREDITS_AUTH.toString(), now]
+            2,
+            key,
+            lastRefillKey,
+            DAILY_CREDITS_AUTH.toString(),
+            now
         );
+        return typeof result === 'number' ? result : parseInt(result as string) || 0;
     } catch (error) {
         console.error('Failed to get remaining credits for user:', error);
         return 0;
@@ -92,11 +96,15 @@ async function getRemainingCreditsForIp(ip: string): Promise<number> {
         const lastRefillKey = `${key}:lastRefill`;
         const now = new Date().toISOString().split('T')[0];
 
-        return await kv.eval(
+        const result = await kv.eval(
             GET_REMAINING_CREDITS_SCRIPT,
-            [key, lastRefillKey],
-            [DAILY_CREDITS_IP.toString(), now]
+            2,
+            key,
+            lastRefillKey,
+            DAILY_CREDITS_IP.toString(),
+            now
         );
+        return typeof result === 'number' ? result : parseInt(result as string) || 0;
     } catch (error) {
         console.error('Failed to get remaining credits for IP:', error);
         return 0;
@@ -119,7 +127,8 @@ async function deductCreditsFromUser(userId: string, cost: number): Promise<bool
     try {
         const key = `credits:user:${userId}`;
 
-        return (await kv.eval(DEDUCT_CREDITS_SCRIPT, [key], [cost.toString()])) === 1;
+        const result = await kv.eval(DEDUCT_CREDITS_SCRIPT, 1, key, cost.toString());
+        return result === 1;
     } catch (error) {
         console.error('Failed to deduct credits from user:', error);
         return false;
@@ -130,7 +139,8 @@ async function deductCreditsFromIp(ip: string, cost: number): Promise<boolean> {
     try {
         const key = `credits:ip:${ip}`;
 
-        return (await kv.eval(DEDUCT_CREDITS_SCRIPT, [key], [cost.toString()])) === 1;
+        const result = await kv.eval(DEDUCT_CREDITS_SCRIPT, 1, key, cost.toString());
+        return result === 1;
     } catch (error) {
         console.error('Failed to deduct credits from IP:', error);
         return false;

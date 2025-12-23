@@ -1,10 +1,10 @@
-import { auth } from '@clerk/nextjs/server';
 import { prisma } from '@repo/prisma';
 import { geolocation } from '@vercel/functions';
 import { NextRequest, NextResponse } from 'next/server';
+import { getAuthSession } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
-    const session = await auth();
+    const session = await getAuthSession(request);
     const userId = session?.userId;
 
     if (!userId) {

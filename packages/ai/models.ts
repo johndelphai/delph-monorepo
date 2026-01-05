@@ -11,11 +11,14 @@ export enum ModelEnum {
     LLAMA_4_SCOUT = 'accounts/fireworks/models/llama4-scout-instruct-basic',
     Deepseek_R1_Distill_Qwen_14B = 'deepseek-r1-distill-qwen-14b',
     Claude_3_5_Sonnet = 'claude-3-5-sonnet-20240620',
+    Claude_Haiku = 'claude-3-haiku-20240307',
     O4_Mini = 'o4-mini',
     GEMINI_2_FLASH = 'gemini-2.0-flash',
+    GEMINI_2_5_PRO = 'gemini-2.5-pro-preview-05-06',
     QWQ_32B = 'accounts/fireworks/models/qwq-32b',
     Deepseek_R1 = 'accounts/fireworks/models/deepseek-r1',
     Claude_3_7_Sonnet = 'claude-3-7-sonnet-20250219',
+    LLAMA_3_3_70B = 'meta-llama/Llama-3.3-70B-Instruct-Turbo',
 }
 
 export type Model = {
@@ -70,13 +73,6 @@ export const models: Model[] = [
         contextWindow: 16384,
     },
     {
-        id: ModelEnum.GPT_4o_Mini,
-        name: 'GPT-4o Mini',
-        provider: 'openai',
-        maxTokens: 16384,
-        contextWindow: 16384,
-    },
-    {
         id: ModelEnum.Deepseek_R1_Distill_Qwen_14B,
         name: 'DeepSeek R1 Distill Qwen 14B',
         provider: 'together',
@@ -125,6 +121,27 @@ export const models: Model[] = [
         maxTokens: 16384,
         contextWindow: 16384,
     },
+    {
+        id: ModelEnum.GEMINI_2_5_PRO,
+        name: 'Gemini 2.5 Pro',
+        provider: 'google',
+        maxTokens: 65536,
+        contextWindow: 1000000,
+    },
+    {
+        id: ModelEnum.Claude_Haiku,
+        name: 'Claude Haiku',
+        provider: 'anthropic',
+        maxTokens: 8192,
+        contextWindow: 200000,
+    },
+    {
+        id: ModelEnum.LLAMA_3_3_70B,
+        name: 'Llama 3.3 70B',
+        provider: 'together',
+        maxTokens: 16384,
+        contextWindow: 128000,
+    },
 ];
 
 export const getModelFromChatMode = (mode?: string): ModelEnum => {
@@ -147,6 +164,12 @@ export const getModelFromChatMode = (mode?: string): ModelEnum => {
             return ModelEnum.GPT_4_1_Nano;
         case ChatMode.O4_Mini:
             return ModelEnum.O4_Mini;
+        case ChatMode.GEMINI_2_5_PRO:
+            return ModelEnum.GEMINI_2_5_PRO;
+        case ChatMode.CLAUDE_HAIKU:
+            return ModelEnum.Claude_Haiku;
+        case ChatMode.LLAMA_3_3_70B:
+            return ModelEnum.LLAMA_3_3_70B;
         case ChatMode.GPT_4_1_Mini:
         default:
             return ModelEnum.GPT_4o_Mini;
@@ -167,6 +190,12 @@ export const getChatModeMaxTokens = (mode: ChatMode) => {
             return 100000;
         case ChatMode.GPT_4o_Mini:
             return 100000;
+        case ChatMode.GEMINI_2_5_PRO:
+            return 1000000;
+        case ChatMode.CLAUDE_HAIKU:
+            return 200000;
+        case ChatMode.LLAMA_3_3_70B:
+            return 128000;
         case ChatMode.Deep:
             return 100000;
         default:

@@ -34,3 +34,11 @@ yarn-error.log*
 # turbo
 .turbo
 
+# Claude / AI tools
+.claude/
+
+# LLM artifacts
+*.llm
+*.prompt
+*.chain
+.claude

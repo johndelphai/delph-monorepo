@@ -686,7 +686,7 @@ export const DeveloperApiSettings = () => {
                     {`curl -X POST https://delph.tech/api/v1/chat \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
-  -d '{"model":"gemini-flash-2.0","messages":[{"role":"user","content":"Hello!"}]}'`}
+  -d '{"model":"gemini-flash-2.5","messages":[{"role":"user","content":"Hello!"}]}'`}
                 </pre>
             </div>
         </div>

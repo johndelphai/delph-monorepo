@@ -2,6 +2,7 @@
     "private": true,
     "scripts": {
         "build": "bun run --cwd apps/web build",
+        "start": "bun run --cwd apps/web start",
         "dev": "bun run --cwd apps/web dev",
         "lint": "bun run --cwd apps/web lint",
         "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules apps/*/.next",

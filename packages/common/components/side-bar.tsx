@@ -17,6 +17,8 @@ import {
 import {
     IconArrowBarLeft,
     IconArrowBarRight,
+    IconBrandGithub,
+    IconBrandX,
     IconCode,
     IconCommand,
     IconLogout,
@@ -336,6 +338,43 @@ export const Sidebar = () => {
                             <IconArrowBarRight size={16} strokeWidth={2} />
                         </Button>
                     )}
+                    <Flex
+                        className={cn(
+                            'w-full',
+                            isSidebarOpen ? 'justify-start gap-1 px-2' : 'justify-center gap-2'
+                        )}
+                        direction={isSidebarOpen ? 'row' : 'col'}
+                        items="center"
+                    >
+                        <Link
+                            href="https://x.com/delphdotai"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Button
+                                variant="ghost"
+                                size="icon-sm"
+                                tooltip={isSidebarOpen ? undefined : 'X'}
+                                tooltipSide="right"
+                            >
+                                <IconBrandX size={14} strokeWidth={2} className="text-muted-foreground" />
+                            </Button>
+                        </Link>
+                        <Link
+                            href="https://github.com/johndelphai/delph-monorepo"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Button
+                                variant="ghost"
+                                size="icon-sm"
+                                tooltip={isSidebarOpen ? undefined : 'GitHub'}
+                                tooltipSide="right"
+                            >
+                                <IconBrandGithub size={14} strokeWidth={2} className="text-muted-foreground" />
+                            </Button>
+                        </Link>
+                    </Flex>
                     {isSignedIn && (
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>

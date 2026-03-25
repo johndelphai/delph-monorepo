@@ -76,7 +76,7 @@ export const modelOptions = [
         creditCost: CHAT_MODE_CREDIT_COSTS[ChatMode.GPT_4_1_Nano],
     },
     {
-        label: 'Gemini Flash 2.0',
+        label: 'Gemini 2.5 Flash',
         value: ChatMode.GEMINI_2_FLASH,
         // webSearch: true,
         icon: undefined,
@@ -100,11 +100,11 @@ export const modelOptions = [
     },
 
     {
-        label: 'Claude 3.5 Sonnet',
-        value: ChatMode.CLAUDE_3_5_SONNET,
+        label: 'Sonnet 4.6',
+        value: ChatMode.CLAUDE_SONNET_4_6,
         // webSearch: true,
         icon: undefined,
-        creditCost: CHAT_MODE_CREDIT_COSTS[ChatMode.CLAUDE_3_5_SONNET],
+        creditCost: CHAT_MODE_CREDIT_COSTS[ChatMode.CLAUDE_SONNET_4_6],
     },
 
     {
@@ -116,10 +116,10 @@ export const modelOptions = [
     },
 
     {
-        label: 'Claude 3.7 Sonnet',
-        value: ChatMode.CLAUDE_3_7_SONNET,
+        label: 'Opus 4.6',
+        value: ChatMode.CLAUDE_OPUS_4_6,
         icon: undefined,
-        creditCost: CHAT_MODE_CREDIT_COSTS[ChatMode.CLAUDE_3_7_SONNET],
+        creditCost: CHAT_MODE_CREDIT_COSTS[ChatMode.CLAUDE_OPUS_4_6],
     },
     {
         label: 'Gemini 2.5 Pro',
@@ -128,10 +128,10 @@ export const modelOptions = [
         creditCost: CHAT_MODE_CREDIT_COSTS[ChatMode.GEMINI_2_5_PRO],
     },
     {
-        label: 'Claude Haiku',
-        value: ChatMode.CLAUDE_HAIKU,
+        label: 'Haiku 4.5',
+        value: ChatMode.CLAUDE_HAIKU_4_5,
         icon: undefined,
-        creditCost: CHAT_MODE_CREDIT_COSTS[ChatMode.CLAUDE_HAIKU],
+        creditCost: CHAT_MODE_CREDIT_COSTS[ChatMode.CLAUDE_HAIKU_4_5],
     },
     {
         label: 'Llama 3.3 70B',

@@ -10,9 +10,9 @@ export enum ChatMode {
     GEMINI_2_FLASH = 'gemini-flash-2.0',
     GEMINI_2_5_PRO = 'gemini-2.5-pro',
     DEEPSEEK_R1 = 'deepseek-r1',
-    CLAUDE_3_5_SONNET = 'claude-3-5-sonnet',
-    CLAUDE_3_7_SONNET = 'claude-3-7-sonnet',
-    CLAUDE_HAIKU = 'claude-haiku',
+    CLAUDE_SONNET_4_6 = 'claude-sonnet-4.6',
+    CLAUDE_OPUS_4_6 = 'claude-opus-4.6',
+    CLAUDE_HAIKU_4_5 = 'claude-haiku-4.5',
     LLAMA_3_3_70B = 'llama-3.3-70b',
 }
 
@@ -82,13 +82,13 @@ export const ChatModeConfig: Record<
         retry: true,
         isAuthRequired: false,
     },
-    [ChatMode.CLAUDE_3_5_SONNET]: {
+    [ChatMode.CLAUDE_SONNET_4_6]: {
         webSearch: true,
         imageUpload: true,
         retry: true,
         isAuthRequired: true,
     },
-    [ChatMode.CLAUDE_3_7_SONNET]: {
+    [ChatMode.CLAUDE_OPUS_4_6]: {
         webSearch: true,
         imageUpload: true,
         retry: true,
@@ -106,11 +106,11 @@ export const ChatModeConfig: Record<
         retry: true,
         isAuthRequired: false,
     },
-    [ChatMode.CLAUDE_HAIKU]: {
+    [ChatMode.CLAUDE_HAIKU_4_5]: {
         webSearch: true,
         imageUpload: true,
         retry: true,
-        isAuthRequired: false,
+        isAuthRequired: true,
     },
     [ChatMode.LLAMA_3_3_70B]: {
         webSearch: true,
@@ -135,9 +135,9 @@ export const CHAT_MODE_CREDIT_COSTS = {
     [ChatMode.GPT_4_1_Mini]: 2,
     [ChatMode.GPT_4_1_Nano]: 1,
     [ChatMode.O4_Mini]: 5,
-    [ChatMode.CLAUDE_3_5_SONNET]: 5,
-    [ChatMode.CLAUDE_3_7_SONNET]: 5,
-    [ChatMode.CLAUDE_HAIKU]: 1,
+    [ChatMode.CLAUDE_SONNET_4_6]: 10,
+    [ChatMode.CLAUDE_OPUS_4_6]: 10,
+    [ChatMode.CLAUDE_HAIKU_4_5]: 10,
     [ChatMode.GEMINI_2_FLASH]: 1,
     [ChatMode.GEMINI_2_5_PRO]: 3,
     [ChatMode.DEEPSEEK_R1]: 5,
@@ -160,20 +160,20 @@ export const getChatModeName = (mode: ChatMode) => {
             return 'Llama 4 Scout';
         case ChatMode.GPT_4o_Mini:
             return 'GPT 4o Mini';
-        case ChatMode.CLAUDE_3_5_SONNET:
-            return 'Claude 3.5 Sonnet';
-        case ChatMode.CLAUDE_3_7_SONNET:
-            return 'Claude 3.7 Sonnet';
+        case ChatMode.CLAUDE_SONNET_4_6:
+            return 'Sonnet 4.6';
+        case ChatMode.CLAUDE_OPUS_4_6:
+            return 'Opus 4.6';
         case ChatMode.O4_Mini:
             return 'O4 Mini';
         case ChatMode.DEEPSEEK_R1:
             return 'DeepSeek R1';
         case ChatMode.GEMINI_2_FLASH:
-            return 'Gemini 2 Flash';
+            return 'Gemini 2.5 Flash';
         case ChatMode.GEMINI_2_5_PRO:
             return 'Gemini 2.5 Pro';
-        case ChatMode.CLAUDE_HAIKU:
-            return 'Claude Haiku';
+        case ChatMode.CLAUDE_HAIKU_4_5:
+            return 'Haiku 4.5';
         case ChatMode.LLAMA_3_3_70B:
             return 'Llama 3.3 70B';
     }

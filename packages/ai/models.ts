@@ -10,14 +10,14 @@ export enum ModelEnum {
     GPT_4_1 = 'gpt-4.1',
     LLAMA_4_SCOUT = 'accounts/fireworks/models/llama4-scout-instruct-basic',
     Deepseek_R1_Distill_Qwen_14B = 'deepseek-r1-distill-qwen-14b',
-    Claude_3_5_Sonnet = 'claude-3-5-sonnet-20240620',
-    Claude_Haiku = 'claude-3-haiku-20240307',
+    Claude_Sonnet_4_6 = 'claude-sonnet-4-6',
+    Claude_Haiku_4_5 = 'claude-haiku-4-5-20251001',
     O4_Mini = 'o4-mini',
-    GEMINI_2_FLASH = 'gemini-2.0-flash',
+    GEMINI_2_FLASH = 'gemini-2.5-flash',
     GEMINI_2_5_PRO = 'gemini-2.5-pro-preview-05-06',
     QWQ_32B = 'accounts/fireworks/models/qwq-32b',
     Deepseek_R1 = 'accounts/fireworks/models/deepseek-r1',
-    Claude_3_7_Sonnet = 'claude-3-7-sonnet-20250219',
+    Claude_Opus_4_6 = 'claude-opus-4-6',
     LLAMA_3_3_70B = 'meta-llama/Llama-3.3-70B-Instruct-Turbo',
 }
 
@@ -87,22 +87,22 @@ export const models: Model[] = [
         contextWindow: 16384,
     },
     {
-        id: ModelEnum.Claude_3_5_Sonnet,
-        name: 'Claude 3.5 Sonnet',
+        id: ModelEnum.Claude_Sonnet_4_6,
+        name: 'Sonnet 4.6',
         provider: 'anthropic',
         maxTokens: 16384,
-        contextWindow: 16384,
+        contextWindow: 200000,
     },
     {
-        id: ModelEnum.Claude_3_7_Sonnet,
-        name: 'Claude 3.7 Sonnet',
+        id: ModelEnum.Claude_Opus_4_6,
+        name: 'Opus 4.6',
         provider: 'anthropic',
         maxTokens: 16384,
-        contextWindow: 16384,
+        contextWindow: 200000,
     },
     {
         id: ModelEnum.GEMINI_2_FLASH,
-        name: 'Gemini 2 Flash',
+        name: 'Gemini 2.5 Flash',
         provider: 'google',
         maxTokens: 200000,
         contextWindow: 200000,
@@ -129,8 +129,8 @@ export const models: Model[] = [
         contextWindow: 1000000,
     },
     {
-        id: ModelEnum.Claude_Haiku,
-        name: 'Claude Haiku',
+        id: ModelEnum.Claude_Haiku_4_5,
+        name: 'Haiku 4.5',
         provider: 'anthropic',
         maxTokens: 8192,
         contextWindow: 200000,
@@ -150,10 +150,10 @@ export const getModelFromChatMode = (mode?: string): ModelEnum => {
             return ModelEnum.GEMINI_2_FLASH;
         case ChatMode.DEEPSEEK_R1:
             return ModelEnum.Deepseek_R1;
-        case ChatMode.CLAUDE_3_5_SONNET:
-            return ModelEnum.Claude_3_5_Sonnet;
-        case ChatMode.CLAUDE_3_7_SONNET:
-            return ModelEnum.Claude_3_7_Sonnet;
+        case ChatMode.CLAUDE_SONNET_4_6:
+            return ModelEnum.Claude_Sonnet_4_6;
+        case ChatMode.CLAUDE_OPUS_4_6:
+            return ModelEnum.Claude_Opus_4_6;
         case ChatMode.GPT_4o_Mini:
             return ModelEnum.GPT_4o_Mini;
         case ChatMode.GPT_4_1:
@@ -166,8 +166,8 @@ export const getModelFromChatMode = (mode?: string): ModelEnum => {
             return ModelEnum.O4_Mini;
         case ChatMode.GEMINI_2_5_PRO:
             return ModelEnum.GEMINI_2_5_PRO;
-        case ChatMode.CLAUDE_HAIKU:
-            return ModelEnum.Claude_Haiku;
+        case ChatMode.CLAUDE_HAIKU_4_5:
+            return ModelEnum.Claude_Haiku_4_5;
         case ChatMode.LLAMA_3_3_70B:
             return ModelEnum.LLAMA_3_3_70B;
         case ChatMode.GPT_4_1_Mini:
@@ -182,17 +182,17 @@ export const getChatModeMaxTokens = (mode: ChatMode) => {
             return 500000;
         case ChatMode.DEEPSEEK_R1:
             return 100000;
-        case ChatMode.CLAUDE_3_5_SONNET:
-            return 100000;
-        case ChatMode.CLAUDE_3_7_SONNET:
-            return 100000;
+        case ChatMode.CLAUDE_SONNET_4_6:
+            return 200000;
+        case ChatMode.CLAUDE_OPUS_4_6:
+            return 200000;
         case ChatMode.O4_Mini:
             return 100000;
         case ChatMode.GPT_4o_Mini:
             return 100000;
         case ChatMode.GEMINI_2_5_PRO:
             return 1000000;
-        case ChatMode.CLAUDE_HAIKU:
+        case ChatMode.CLAUDE_HAIKU_4_5:
             return 200000;
         case ChatMode.LLAMA_3_3_70B:
             return 128000;

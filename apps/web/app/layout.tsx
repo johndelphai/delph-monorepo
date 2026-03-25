@@ -15,39 +15,62 @@ const bricolage = Bricolage_Grotesque({
 import './globals.css';
 
 export const metadata: Metadata = {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://delph.ai'),
-    title: 'Delph - Go Deeper with AI-Powered Research & Agentic Workflows',
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://delph.tech'),
+    title: {
+        default: 'Delph - Go Deeper with AI-Powered Research & Agentic Workflows',
+        template: '%s | Delph',
+    },
     description:
         'Experience deep, AI-powered research with agentic workflows and a wide variety of models for advanced productivity.',
-    keywords: 'AI chat, LLM, language models, privacy, minimal UI, ollama, chatgpt',
+    applicationName: 'Delph',
+    keywords: [
+        'AI chat',
+        'LLM',
+        'language models',
+        'AI research',
+        'agentic workflows',
+        'privacy',
+        'ollama',
+        'chatgpt',
+    ],
     authors: [{ name: 'Trendy design', url: 'https://trendy.design' }],
     creator: 'Trendy design',
     publisher: 'Trendy design',
+    category: 'technology',
+    icons: {
+        icon: [
+            { url: '/favicon.ico', sizes: 'any' },
+            { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+            { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+        ],
+        apple: '/apple-touch-icon.png',
+    },
+    manifest: '/site.webmanifest',
     openGraph: {
         title: 'Delph - Go Deeper with AI-Powered Research & Agentic Workflows',
         siteName: 'Delph',
         description:
             'Experience deep, AI-powered research with agentic workflows and a wide variety of models for advanced productivity.',
-        url: 'https://delph.ai',
+        url: 'https://delph.tech',
         type: 'website',
         locale: 'en_US',
         images: [
             {
-                url: 'https://delph.ai/og-image.jpg',
+                url: 'https://delph.tech/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'Delph Preview',
+                alt: 'Delph - AI-Powered Research',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
         title: 'Delph - Go Deeper with AI-Powered Research & Agentic Workflows',
-        site: 'Delph',
-        creator: '@delph_ai',
+        site: '@delph_tech',
+        creator: '@delph_tech',
         description:
             'Experience deep, AI-powered research with agentic workflows and a wide variety of models for advanced productivity.',
-        images: ['https://delph.ai/twitter-image.jpg'],
+        images: ['https://delph.tech/og-image.jpg'],
     },
     robots: {
         index: true,
@@ -61,7 +84,7 @@ export const metadata: Metadata = {
         },
     },
     alternates: {
-        canonical: 'https://delph.ai',
+        canonical: 'https://delph.tech',
     },
 };
 
@@ -94,7 +117,7 @@ export default function ParentLayout({
             suppressHydrationWarning
         >
             <head>
-                <link rel="icon" href="/favicon.ico" sizes="any" />
+                <meta name="theme-color" content="#000000" />
 
                 {/* <script
                     crossOrigin="anonymous"

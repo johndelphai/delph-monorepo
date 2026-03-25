@@ -5,6 +5,7 @@ import { FormEvent, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChatMode, getChatModeName } from '@repo/shared/config';
+import { IconBrandGithub, IconBrandX } from '@tabler/icons-react';
 import { AlignLeft, ArrowRight, Compass, Sparkles, TriangleAlert } from 'lucide-react';
 import { LandingSplash } from './landing-splash';
 
@@ -16,11 +17,11 @@ const modelList = [
     ChatMode.GEMINI_2_FLASH,
     ChatMode.GPT_4o_Mini,
     ChatMode.O4_Mini,
-    ChatMode.CLAUDE_3_5_SONNET,
+    ChatMode.CLAUDE_SONNET_4_6,
     ChatMode.DEEPSEEK_R1,
-    ChatMode.CLAUDE_3_7_SONNET,
+    ChatMode.CLAUDE_OPUS_4_6,
     ChatMode.GEMINI_2_5_PRO,
-    ChatMode.CLAUDE_HAIKU,
+    ChatMode.CLAUDE_HAIKU_4_5,
     ChatMode.LLAMA_3_3_70B,
 ].map(getChatModeName);
 
@@ -535,6 +536,22 @@ export default function Home() {
                         </Link>
                         <Link href="/chat" className="landing-footer-link">
                             Chat
+                        </Link>
+                        <Link
+                            href="https://x.com/delphdotai"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="landing-footer-link"
+                        >
+                            <IconBrandX size={16} strokeWidth={2} />
+                        </Link>
+                        <Link
+                            href="https://github.com/johndelphai/delph-monorepo"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="landing-footer-link"
+                        >
+                            <IconBrandGithub size={16} strokeWidth={2} />
                         </Link>
                     </nav>
                 </div>

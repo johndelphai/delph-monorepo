@@ -9,7 +9,7 @@ const CODE_CURL = `curl -X POST https://delph.tech/api/v1/chat \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "gemini-flash-2.0",
+    "model": "gemini-flash-2.5",
     "messages": [
       { "role": "user", "content": "Explain quantum entanglement simply." }
     ],
@@ -23,7 +23,7 @@ const CODE_JS = `const response = await fetch('https://delph.tech/api/v1/chat', 
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    model: 'gemini-flash-2.0',
+    model: 'gemini-flash-2.5',
     messages: [
       { role: 'user', content: 'Explain quantum entanglement simply.' }
     ],
@@ -43,15 +43,15 @@ while (true) {
 }`;
 
 const MODELS = [
-    { id: 'gemini-flash-2.0', name: 'Gemini 2 Flash', credits: 1, notes: 'Fast, free tier' },
+    { id: 'gemini-flash-2.5', name: 'Gemini 2.5 Flash', credits: 1, notes: 'Fast, free tier' },
     { id: 'gemini-2.5-pro', name: 'Gemini 2.5 Pro', credits: 3, notes: '1M context' },
     { id: 'gpt-4o-mini', name: 'GPT-4o Mini', credits: 1, notes: 'Good balance' },
     { id: 'gpt-4.1-nano', name: 'GPT-4.1 Nano', credits: 1, notes: 'Lightweight' },
     { id: 'llama-4-scout', name: 'Llama 4 Scout', credits: 1, notes: 'Open source' },
     { id: 'llama-3.3-70b', name: 'Llama 3.3 70B', credits: 1, notes: 'Open source' },
-    { id: 'claude-haiku', name: 'Claude Haiku', credits: 1, notes: 'Fast Claude' },
-    { id: 'claude-3-5-sonnet', name: 'Claude 3.5 Sonnet', credits: 5, notes: 'High quality' },
-    { id: 'claude-3-7-sonnet', name: 'Claude 3.7 Sonnet', credits: 5, notes: 'Extended thinking' },
+    { id: 'claude-haiku-4.5', name: 'Haiku 4.5', credits: 10, notes: 'Fast Claude' },
+    { id: 'claude-sonnet-4.6', name: 'Sonnet 4.6', credits: 10, notes: 'High quality' },
+    { id: 'claude-opus-4.6', name: 'Opus 4.6', credits: 10, notes: 'Most capable' },
     { id: 'gpt-4.1', name: 'GPT-4.1', credits: 5, notes: 'High quality' },
     { id: 'deepseek-r1', name: 'DeepSeek R1', credits: 5, notes: 'Reasoning model' },
 ];
@@ -107,7 +107,7 @@ export default function DocsPage() {
                             <tbody className="divide-border divide-y">
                                 {[
                                     ['messages', 'array', 'Yes', 'Array of {role, content} objects. Roles: user, assistant, system'],
-                                    ['model', 'string', 'No', 'Model ID (default: gemini-flash-2.0)'],
+                                    ['model', 'string', 'No', 'Model ID (default: gemini-flash-2.5)'],
                                     ['web_search', 'boolean', 'No', 'Enable web search (default: false)'],
                                     ['custom_instructions', 'string', 'No', 'Extra system instructions'],
                                     ['thread_id', 'string', 'No', 'Optional ID to group messages'],

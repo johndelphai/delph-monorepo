@@ -18,7 +18,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 
-const DEFAULT_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://delph.ai';
+const DEFAULT_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://delph.tech';
 
 const formatResetLabel = (reset: string | undefined) => {
     if (!reset) {
@@ -58,7 +58,7 @@ export default function DeveloperApiPage() {
         () => `curl ${DEFAULT_BASE_URL}/api/v1/chat \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
-  -d '{"model":"gemini-flash-2.0","messages":[{"role":"user","content":"Hello!"}]}'`,
+  -d '{"model":"gemini-flash-2.5","messages":[{"role":"user","content":"Hello!"}]}'`,
         []
     );
 

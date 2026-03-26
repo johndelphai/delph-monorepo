@@ -1,4 +1,5 @@
 import { createHmac, timingSafeEqual } from 'crypto';
+import { Buffer } from 'buffer';
 
 export const AUTH_COOKIE_NAME = 'delph_wallet_session';
 export const AUTH_NONCE_PREFIX = 'llmchat:wallet_auth:nonce:';

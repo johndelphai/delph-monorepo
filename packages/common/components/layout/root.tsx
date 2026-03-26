@@ -26,7 +26,7 @@ export type TRootLayout = {
 
 export const RootLayout: FC<TRootLayout> = ({ children }) => {
     const pathname = usePathname();
-    const isLandingPage = pathname === '/';
+    const isLandingPage = pathname === '/' || pathname.startsWith('/lp/');
     const { isSidebarOpen, isMobileSidebarOpen, setIsMobileSidebarOpen } = useRootContext();
     const setIsSettingOpen = useAppStore(state => state.setIsSettingsOpen);
 

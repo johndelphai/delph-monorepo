@@ -9,7 +9,18 @@ type CustomSignInProps = {
 };
 
 const encodeSignature = (signature: Uint8Array) => {
-    return window.btoa(String.fromCharCode(...Array.from(signature)));
+    let binary = '';
+    const chunkSize = 0x8000;
+
+    for (let index = 0; index < signature.length; index += chunkSize) {
+        const chunk = signature.subarray(index, index + chunkSize);
+
+        for (let chunkIndex = 0; chunkIndex < chunk.length; chunkIndex += 1) {
+            binary += String.fromCharCode(chunk[chunkIndex]);
+        }
+    }
+
+    return window.btoa(binary);
 };
 
 const formatWalletAddress = (walletAddress: string) => {
@@ -85,6 +96,12 @@ export const CustomSignIn = ({ onClose }: CustomSignInProps) => {
             const signatureBytes = await signMessage(
                 new TextEncoder().encode(noncePayload.message as string)
             );
+
+            if (signatureBytes.length !== 64) {
+                throw new Error(
+                    `Wallet returned an invalid signature (${signatureBytes.length} bytes). Expected 64 bytes.`
+                );
+            }
 
             const verifyResponse = await fetch('/api/auth/verify', {
                 method: 'POST',

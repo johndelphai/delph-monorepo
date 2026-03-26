@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Buffer } from 'buffer';
 import {
     clearWalletChallenge,
     getWalletChallenge,
@@ -35,11 +36,29 @@ export async function POST(request: NextRequest) {
         }
 
         const signatureBytes = Buffer.from(signature, 'base64');
-        const isValid = verifyWalletSignature({
-            walletAddress,
-            message,
-            signature: new Uint8Array(signatureBytes),
-        });
+
+        if (signatureBytes.length === 0) {
+            return NextResponse.json({ error: 'Signature payload could not be decoded from base64' }, { status: 400 });
+        }
+
+        let isValid = false;
+        try {
+            isValid = verifyWalletSignature({
+                walletAddress,
+                message,
+                signature: new Uint8Array(signatureBytes),
+            });
+        } catch (error) {
+            return NextResponse.json(
+                {
+                    error:
+                        error instanceof Error
+                            ? error.message
+                            : 'Failed to verify wallet signature payload',
+                },
+                { status: 400 }
+            );
+        }
 
         if (!isValid) {
             return NextResponse.json({ error: 'Invalid wallet signature' }, { status: 401 });
@@ -54,6 +73,12 @@ export async function POST(request: NextRequest) {
     } catch (error) {
         console.error('Failed to verify wallet signature:', error);
 
-        return NextResponse.json({ error: 'Failed to verify signature' }, { status: 400 });
+        return NextResponse.json(
+            {
+                error:
+                    error instanceof Error ? error.message : 'Failed to verify signature',
+            },
+            { status: 400 }
+        );
     }
 }

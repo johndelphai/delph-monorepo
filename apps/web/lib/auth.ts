@@ -123,6 +123,12 @@ export function verifyWalletSignature({
     const publicKeyBytes = new PublicKey(normalizedWalletAddress).toBytes();
     const messageBytes = new TextEncoder().encode(message);
 
+    if (signature.length !== nacl.sign.signatureLength) {
+        throw new Error(
+            `Malformed signature: expected ${nacl.sign.signatureLength} bytes, received ${signature.length}`
+        );
+    }
+
     return nacl.sign.detached.verify(messageBytes, signature, publicKeyBytes);
 }
 

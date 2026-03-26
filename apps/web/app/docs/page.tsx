@@ -215,7 +215,7 @@ export default function DocsPage() {
                 <p className="text-muted-foreground text-xs">
                     Need help?{' '}
                     <a
-                        href="https://github.com/trendy-design/llmchat/issues"
+                        href="https://github.com/johndelphai/delph-monorepo/issues"
                         className="text-primary hover:underline"
                     >
                         Open an issue on GitHub

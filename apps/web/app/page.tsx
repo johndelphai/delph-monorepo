@@ -470,7 +470,10 @@ export default function Home() {
                             <article className="landing-reveal landing-reveal-up landing-reveal-2 landing-pricing-card landing-pricing-card-featured">
                                 <p className="landing-pricing-badge">Most popular</p>
                                 <p className="landing-pricing-label mt-5">Pro</p>
-                                <p className="landing-price mt-3">$18/mo</p>
+                                <p className="landing-price mt-3">$18.99/mo</p>
+                                <p className="landing-price-caption mt-2">
+                                    Stake DELPH to reduce your subscription cost. The more you stake, the less you pay, all the way down to $18.99 per month.
+                                </p>
                                 <p className="landing-price-caption mt-2">
                                     Higher limits and stronger models for daily use.
                                 </p>
@@ -479,8 +482,8 @@ export default function Home() {
                                     <li>Higher usage limits</li>
                                     <li>Priority access to stronger models</li>
                                 </ul>
-                                <Link href="/sign-up" className="landing-primary-cta mt-8 inline-flex items-center justify-center">
-                                    Try Delph
+                                <Link href="/chat" className="landing-primary-cta mt-8 inline-flex items-center justify-center">
+                                    Try Delph Free
                                 </Link>
                             </article>
                             <article className="landing-reveal landing-reveal-up landing-reveal-3 landing-pricing-card">

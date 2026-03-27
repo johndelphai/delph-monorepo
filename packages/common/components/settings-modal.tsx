@@ -634,7 +634,7 @@ export const DeveloperApiSettings = () => {
                 <Alert variant="info">
                     <AlertDescription className="flex flex-col gap-2">
                         <p className="text-xs font-medium">
-                            Your API key (copy it now — it won't be shown again):
+                            Your API key (copy it now   it won't be shown again):
                         </p>
                         <code className="bg-background rounded px-2 py-1.5 text-xs break-all select-all">
                             {apiKey}

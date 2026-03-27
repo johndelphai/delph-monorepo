@@ -272,7 +272,7 @@ export default function TokenDashboardPage() {
                     <p className="text-muted-foreground text-sm leading-relaxed">
                         Delph is an AI-powered research platform with agentic workflows and access to a wide variety
                         of models. It enables deep, multi-step research with web search, document analysis, and
-                        intelligent conversations — all in one place. The DELPH token powers the platform economy,
+                        intelligent conversations   all in one place. The DELPH token powers the platform economy,
                         giving holders access to premium features, API credits, and governance over the protocol.
                     </p>
                 </div>

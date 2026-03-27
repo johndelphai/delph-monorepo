@@ -2,17 +2,17 @@
 
 > Go deeper with AI-powered research and agentic workflows.
 
-Delph is a privacy-focused AI chat platform built for serious research. It supports multiple LLM providers, character-based personas, deep research workflows, and a developer API — all in a clean, minimal interface.
+Delph is a privacy-focused AI chat platform built for serious research. It supports multiple LLM providers, character-based personas, deep research workflows, and a developer API   all in a clean, minimal interface.
 
 ## Features
 
-- **Multi-provider LLM support** — OpenAI, Anthropic, Google, Fireworks, Together AI, xAI, and more
-- **Deep Research mode** — multi-step agentic workflows for comprehensive topic analysis
-- **Pro Search** — enhanced search with real-time web integration
-- **Characters** — custom AI personas with configurable system prompts and model settings
-- **Developer API** — first-class API access for programmatic use
-- **MCP support** — Model Context Protocol for extensible tool integrations
-- **Privacy-first** — chat history stored locally in the browser via IndexedDB (Dexie.js); nothing leaves your device
+- **Multi-provider LLM support**   OpenAI, Anthropic, Google, Fireworks, Together AI, xAI, and more
+- **Deep Research mode**   multi-step agentic workflows for comprehensive topic analysis
+- **Pro Search**   enhanced search with real-time web integration
+- **Characters**   custom AI personas with configurable system prompts and model settings
+- **Developer API**   first-class API access for programmatic use
+- **MCP support**   Model Context Protocol for extensible tool integrations
+- **Privacy-first**   chat history stored locally in the browser via IndexedDB (Dexie.js); nothing leaves your device
 
 ## Architecture
 
@@ -85,4 +85,4 @@ bun build
 
 ## License
 
-MIT — see [LICENSE](LICENSE)
+MIT   see [LICENSE](LICENSE)

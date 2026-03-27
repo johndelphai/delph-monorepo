@@ -6,13 +6,11 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import {
     ArrowRight,
-    Bot,
     Coins,
     Flame,
     Globe,
     Layers,
     Rocket,
-    Search,
     Shield,
     Sparkles,
     Zap,
@@ -222,9 +220,9 @@ export default function DelphLandingPage() {
                             custom={2}
                             className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
                         >
-                            DELPH is the utility token powering the Delph platform — fueling
-                            AI-powered research, agentic workflows, and premium access across the
-                            ecosystem.
+                            A privacy-focused LLM interface and inference API. Access frontier
+                            models through a proxy layer that can&#39;t be traced back to you.
+                            Fully open source. Powered by DELPH.
                         </motion.p>
 
                         {/* Hero image */}
@@ -256,47 +254,47 @@ export default function DelphLandingPage() {
                             Why Delph?
                         </h2>
                         <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-                            Advanced AI research with the tools, models, and privacy you need.
+                            A private inference layer for the best AI models   open source, local-first, untraceable.
                         </p>
                     </motion.div>
 
                     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                         {[
                             {
-                                icon: Search,
-                                title: 'Deep Research',
+                                icon: Shield,
+                                title: 'Privacy Proxy Layer',
                                 description:
-                                    'Multi-step agentic research with web search, document analysis, and intelligent synthesis.',
+                                    'All prompts are routed through a proxy so they can never be traced back to you. No logs, no tracking, no compromise.',
                             },
                             {
                                 icon: Layers,
-                                title: 'Multi-Model Access',
+                                title: 'Frontier Models',
                                 description:
-                                    'GPT-4, Claude, Gemini, Llama, DeepSeek and more — switch freely between the best models.',
-                            },
-                            {
-                                icon: Shield,
-                                title: 'Privacy First',
-                                description:
-                                    'Your conversations stay yours. No training on your data, no compromises.',
-                            },
-                            {
-                                icon: Bot,
-                                title: 'Agentic Workflows',
-                                description:
-                                    'Autonomous agents that plan, execute, and iterate on complex multi-step tasks.',
+                                    'Access GPT-4, Claude, Gemini, Llama, DeepSeek and more through a single private interface.',
                             },
                             {
                                 icon: Globe,
-                                title: 'Real-Time Web',
+                                title: 'Local-First Storage',
                                 description:
-                                    'Search the live web, analyze documents, and pull in real-time data for up-to-date answers.',
+                                    'Chat history lives in your browser, not on our servers. Your data never leaves your device.',
+                            },
+                            {
+                                icon: Sparkles,
+                                title: 'Fully Open Source',
+                                description:
+                                    'Every line of code is public and auditable. Verify the privacy claims yourself   no trust required.',
                             },
                             {
                                 icon: Zap,
-                                title: 'Developer API',
+                                title: 'Inference API',
                                 description:
-                                    'Programmatic access to all models and features through a unified, powerful API.',
+                                    'Programmatic access to all models through a unified, privacy-preserving API for developers.',
+                            },
+                            {
+                                icon: Coins,
+                                title: 'Stake to Save',
+                                description:
+                                    'The more DELPH you stake, the cheaper your subscription. Align incentives between holders and the platform.',
                             },
                         ].map((feature, i) => (
                             <FeatureCard key={feature.title} {...feature} i={i} />
@@ -329,15 +327,15 @@ export default function DelphLandingPage() {
                         <StepCard
                             step="Step 02"
                             icon={Rocket}
-                            title="Stake & Unlock"
-                            description="Stake your DELPH to unlock Delph Pro — unlimited prompts, premium models, and advanced features."
+                            title="Stake & Subscribe"
+                            description="Stake your DELPH to reduce your subscription cost. The more you stake, the less you pay, all the way down to $18.99 per month."
                             i={1}
                         />
                         <StepCard
                             step="Step 03"
-                            icon={Sparkles}
-                            title="Earn & Research"
-                            description="Earn yield on your stake while accessing the most powerful AI research platform available."
+                            icon={Shield}
+                            title="Use Privately"
+                            description="Access frontier models through the privacy proxy. Chat history stays local. No one can trace your prompts."
                             i={2}
                         />
                     </div>
@@ -372,8 +370,8 @@ export default function DelphLandingPage() {
                     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                         <StatBlock label="Total Supply" value="1B" i={0} />
                         <StatBlock label="Deflationary" value="Buy & Burn" i={1} />
-                        <StatBlock label="Revenue Share" value="40%" i={2} />
-                        <StatBlock label="Staking" value="Live" i={3} />
+                        <StatBlock label="Monthly Burns" value="Subscriptions" i={2} />
+                        <StatBlock label="Stake More" value="Pay Less" i={3} />
                     </div>
 
                     {/* Buy & Burn explainer */}
@@ -388,25 +386,27 @@ export default function DelphLandingPage() {
                                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand/20">
                                         <Flame size={20} className="text-brand" />
                                     </div>
-                                    <h3 className="font-clash text-2xl font-bold">Buy &amp; Burn</h3>
+                                    <h3 className="font-clash text-2xl font-bold">Monthly Buy &amp; Burn</h3>
                                 </div>
                                 <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-                                    40% of all platform revenue — from subscriptions and API usage —
-                                    is used to buy DELPH on the open market and permanently burn it.
+                                    Subscription fees are partially used to buy DELPH on the open
+                                    market and permanently burn it every month. More subscribers
+                                    means more tokens burned.
                                 </p>
-                                <p className="text-sm leading-relaxed text-muted-foreground">
-                                    As Delph scales, supply decreases. More users, more revenue,
-                                    more burns — a powerful deflationary flywheel.
+                                <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                                    Staking DELPH reduces your subscription cost   the more you
+                                    stake, the less you pay. This creates a flywheel: stakers get
+                                    cheaper access, and the token supply shrinks over time.
                                 </p>
-                                <div className="mt-6 flex items-center gap-6 text-sm">
+                                <div className="mt-6 flex flex-wrap items-center gap-6 text-sm">
                                     <div className="flex items-center gap-2">
                                         <div className="h-3 w-3 rounded-full bg-brand" />
-                                        <span className="text-muted-foreground">More Revenue</span>
+                                        <span className="text-muted-foreground">Subscriptions</span>
                                     </div>
                                     <ArrowRight size={14} className="text-brand" />
                                     <div className="flex items-center gap-2">
                                         <div className="h-3 w-3 rounded-full bg-brand/60" />
-                                        <span className="text-muted-foreground">More Burns</span>
+                                        <span className="text-muted-foreground">Monthly Burns</span>
                                     </div>
                                     <ArrowRight size={14} className="text-brand" />
                                     <div className="flex items-center gap-2">

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
     title: 'Sign up',
-    description: 'Subscription service coming soon — Delph',
+    description: 'Subscription service coming soon   Delph',
 };
 
 export default function SignUpPage() {

@@ -103,7 +103,10 @@ export const HistoryItem = ({
                 <Link
                     href={`/chat/${thread.id}`}
                     className="flex flex-1 items-center"
-                    onClick={() => switchThread(thread.id)}
+                    onClick={() => {
+                        switchThread(thread.id);
+                        dismiss();
+                    }}
                 >
                     <Flex
                         direction="col"

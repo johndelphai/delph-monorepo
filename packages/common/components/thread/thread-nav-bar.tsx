@@ -66,7 +66,7 @@ export const ThreadNavBar = () => {
     };
 
     return (
-        <div className="border-border bg-secondary absolute left-0 right-0 top-0 z-[100] flex h-10 w-full flex-row items-center justify-between border-b px-4">
+        <div className="border-border bg-secondary absolute left-0 right-0 top-0 z-[50] flex h-10 w-full flex-row items-center justify-between border-b px-4">
             <div className="w-8" />
             <div className="flex flex-col items-center">
                 {activeCharacter && (

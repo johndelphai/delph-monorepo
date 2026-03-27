@@ -42,7 +42,7 @@ import { toast } from 'sonner';
 export const Sidebar = () => {
     const { threadId: currentThreadId } = useParams();
     const pathname = usePathname();
-    const { setIsCommandSearchOpen } = useRootContext();
+    const { setIsCommandSearchOpen, setIsMobileSidebarOpen } = useRootContext();
     const isChatPage = pathname === '/chat';
     const threads = useChatStore(state => state.threads);
     const pinThread = useChatStore(state => state.pinThread);
@@ -116,7 +116,7 @@ export const Sidebar = () => {
                                 isPinned={thread.pinned}
                                 key={thread.id}
                                 dismiss={() => {
-                                    setIsSidebarOpen(prev => false);
+                                    setIsMobileSidebarOpen(false);
                                 }}
                                 isActive={thread.id === currentThreadId}
                             />
@@ -131,7 +131,7 @@ export const Sidebar = () => {
         <div
             className={cn(
                 'relative bottom-0 left-0 top-0 z-[50] flex h-[100dvh] flex-shrink-0 flex-col  py-2 transition-all duration-200',
-                isSidebarOpen ? 'top-0 h-full w-[230px]' : 'w-[50px]'
+                isSidebarOpen ? 'top-0 h-full w-full lg:w-[230px]' : 'w-full lg:w-[50px]'
             )}
         >
             <Flex direction="col" className="w-full flex-1 items-start overflow-hidden">
@@ -307,7 +307,7 @@ export const Sidebar = () => {
                         gap="md"
                         className={cn(
                             'no-scrollbar w-full flex-1 overflow-y-auto px-3 pb-[100px]',
-                            isSidebarOpen ? 'flex' : 'hidden'
+                            isSidebarOpen ? 'flex' : 'flex lg:hidden'
                         )}
                     >
                         {renderGroup({

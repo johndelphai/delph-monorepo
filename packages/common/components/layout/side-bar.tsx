@@ -3,7 +3,7 @@ import { FullPageLoader, HistoryItem } from '@repo/common/components';
 import { useRootContext } from '@repo/common/context';
 import { Thread, useAppStore, useChatStore } from '@repo/common/store';
 import { Button, cn, Flex } from '@repo/ui';
-import { IconArrowBarLeft, IconArrowBarRight, IconPlus, IconSearch } from '@tabler/icons-react';
+import { IconArrowBarLeft, IconArrowBarRight, IconPlus, IconSearch, IconX } from '@tabler/icons-react';
 import moment from 'moment';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 export const Sidebar = () => {
     const { threadId: currentThreadId } = useParams();
     const pathname = usePathname();
-    const { setIsCommandSearchOpen } = useRootContext();
+    const { setIsCommandSearchOpen, setIsMobileSidebarOpen } = useRootContext();
     const { push } = useRouter();
     const isChatPage = pathname.startsWith('/chat');
     const threads = useChatStore(state => state.threads);
@@ -63,7 +63,7 @@ export const Sidebar = () => {
                             thread={thread}
                             key={thread.id}
                             dismiss={() => {
-                                setIsSidebarOpen(prev => false);
+                                setIsMobileSidebarOpen(false);
                             }}
                             isActive={thread.id === currentThreadId}
                         />
@@ -78,12 +78,23 @@ export const Sidebar = () => {
             className={cn(
                 'border-border/0 relative bottom-0 left-0 top-0 z-[50] flex h-[100dvh] flex-shrink-0 flex-col border-r border-dashed py-2 transition-all duration-200',
                 isSidebarOpen
-                    ? 'bg-background border-border/70 shadow-xs top-0 h-full w-[240px] border-r'
-                    : 'w-[50px]'
+                    ? 'bg-background border-border/70 shadow-xs top-0 h-full w-full lg:w-[240px] border-r'
+                    : 'w-full lg:w-[50px]'
             )}
         >
             <Flex direction="col" className="w-full flex-1 overflow-hidden">
                 <Flex direction="col" className="w-full px-2" gap="sm">
+                    {/* Mobile close button */}
+                    <Flex className="w-full items-center justify-between px-1 pt-1 lg:hidden">
+                        <span className="text-sm font-medium">Menu</span>
+                        <Button
+                            variant="ghost"
+                            size="icon-sm"
+                            onClick={() => setIsMobileSidebarOpen(false)}
+                        >
+                            <IconX size={18} strokeWidth={2} />
+                        </Button>
+                    </Flex>
                     <Button
                         size={isSidebarOpen ? 'sm' : 'icon'}
                         variant="bordered"
@@ -91,7 +102,10 @@ export const Sidebar = () => {
                         tooltip={isSidebarOpen ? undefined : 'New Thread'}
                         tooltipSide="right"
                         className={cn('relative w-full shadow-sm', 'justify-center')}
-                        onClick={() => !isChatPage && push('/chat')}
+                        onClick={() => {
+                            setIsMobileSidebarOpen(false);
+                            if (!isChatPage) push('/chat');
+                        }}
                     >
                         <IconPlus
                             size={16}
@@ -126,7 +140,7 @@ export const Sidebar = () => {
                         gap="md"
                         className={cn(
                             'border-border/70 mt-3 w-full flex-1 overflow-y-auto border-t border-dashed p-3',
-                            isSidebarOpen ? 'flex' : 'hidden'
+                            isSidebarOpen ? 'flex' : 'flex lg:hidden'
                         )}
                     >
                         {renderGroup('Today', groupedThreads.today)}

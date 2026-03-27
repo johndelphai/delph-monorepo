@@ -79,11 +79,9 @@ export const RootLayout: FC<TRootLayout> = ({ children }) => {
                 onOpenChange={setIsMobileSidebarOpen}
             >
                 <Drawer.Portal>
-                    <Drawer.Overlay className="fixed inset-0 z-30 backdrop-blur-sm" />
-                    <Drawer.Content className="fixed bottom-0 left-0 top-0 z-[50]">
-                        <Flex className="pr-2">
-                            <Sidebar />
-                        </Flex>
+                    <Drawer.Overlay className="fixed inset-0 z-[59] bg-black/40 backdrop-blur-sm" />
+                    <Drawer.Content className="bg-background fixed bottom-0 left-0 top-0 z-[59] w-[90vw] shadow-xl">
+                        <Sidebar />
                     </Drawer.Content>
                 </Drawer.Portal>
             </Drawer.Root>
@@ -95,7 +93,7 @@ export const RootLayout: FC<TRootLayout> = ({ children }) => {
                         <div className={containerClass}>
                             <div className="relative flex h-full w-0 flex-1 flex-row">
                                 <div className="flex w-full flex-col gap-2 overflow-y-auto">
-                                    <div className="from-secondary to-secondary/0 via-secondary/70 absolute left-0 right-0 top-0 z-40 flex flex-row items-center justify-center gap-1 bg-gradient-to-b p-2 pb-12"></div>
+                                    <div className="from-secondary to-secondary/0 via-secondary/70 pointer-events-none absolute left-0 right-0 top-0 z-40 hidden flex-row items-center justify-center gap-1 bg-gradient-to-b p-2 pb-12 lg:flex"></div>
                                     {/* Auth Button Header */}
 
                                     {children}
@@ -139,7 +137,7 @@ export const SideDrawer = () => {
                         damping: 30,
                         exit: { duration: 0.2 },
                     }}
-                    className="flex min-h-[99dvh] w-full md:w-[400px] lg:w-[500px] shrink-0 flex-col overflow-hidden py-1.5 pl-0.5 pr-1.5"
+                    className="fixed inset-0 z-50 flex min-h-[99dvh] flex-col overflow-hidden md:relative md:inset-auto md:z-auto md:w-[400px] lg:w-[500px] md:shrink-0 md:py-1.5 md:pl-0.5 md:pr-1.5"
                 >
                     <div className="bg-background border-border shadow-subtle-xs flex h-full w-full flex-col overflow-hidden rounded-lg">
                         <div className="border-border flex flex-row items-center justify-between gap-2 border-b py-1.5 pl-4 pr-2">

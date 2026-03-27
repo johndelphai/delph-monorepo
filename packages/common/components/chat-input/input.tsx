@@ -272,7 +272,7 @@ export const ChatInput = ({
             className={cn(
                 'w-full',
                 currentThreadId
-                    ? 'absolute bottom-0'
+                    ? 'absolute bottom-0 pb-[env(safe-area-inset-bottom)]'
                     : ' absolute inset-0 flex h-full w-full flex-col items-center justify-center'
             )}
         >
@@ -362,7 +362,7 @@ const AnimatedTitles = ({ titles = [] }: AnimatedTitlesProps) => {
                         duration: 0.8,
                         ease: 'easeInOut',
                     }}
-                    className="text-foreground/50 text-center text-[32px] font-semibold tracking-tight"
+                    className="text-foreground/50 text-center text-[24px] sm:text-[32px] font-semibold tracking-tight"
                 >
                     {greeting}
                 </motion.h1>
